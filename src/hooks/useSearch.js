@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import axiosInstance from "../api/axiosInstance";
 import useSWRImmutable from "swr/immutable";
+import useSWR from "swr";
 
 const INDICES = [
   {
@@ -69,12 +70,15 @@ export const useSearch = () => {
     priceRange: [priceMin, priceMax],
   };
 
-  const { data, error, isLoading } = useSWRImmutable(
+  const { data, error, isLoading } = useSWR(
     query ? ["/search", query, page, filters, selectedIndex] : null,
     fetcher,
-    { revalidateOnFocus: false }
+    {
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+      keepPreviousData: true
+    }
   );
-  
 
   const rawItems = data?.items || [];
   const totalPages = Math.ceil((data?.total || 0) / 28);
