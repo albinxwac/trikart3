@@ -1,0 +1,6 @@
+{/* <h3>Sort by:</h3>
+    <DropdownButton title={sortOption} onSelect={handleSortSelect} className="mb-2">
+      <Dropdown.Item eventKey="None">None</Dropdown.Item>
+      <Dropdown.Item eventKey="Price: High to Low">Price: High to Low</Dropdown.Item>
+      <Dropdown.Item eventKey="Price: Low to High">Price: Low to High</Dropdown.Item>
+    </DropdownButton> */}
